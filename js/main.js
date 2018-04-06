@@ -65,6 +65,26 @@ jQuery(document).ready(function( $ ) {
   }
 
   // Smooth scroll for the menu and links with .scrollto classes
+
+//   $('.nav-menu a, #mobile-nav a, .scrollto[href*="#"]:not([href="#"])').click(function() {
+//   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+//     var target = $(this.hash);
+//     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+//     if (target.length) {
+//       $('html, body').animate({
+//         scrollTop: (target.offset().top - 54)
+//       }, 1000, "easeInOutExpo");
+//       return false;
+//     }
+//   }
+// });
+//
+//
+// $('body').scrollspy({
+//   target: '#header',
+//   offset: 10
+// });
+
   $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -97,6 +117,12 @@ jQuery(document).ready(function( $ ) {
       }
     }
   });
+
+  $('body').scrollspy({
+  target: '#nav-menu-container',
+  offset: 54
+});
+
 
   // Header scroll class
   $(window).scroll(function() {
