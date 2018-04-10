@@ -118,6 +118,15 @@ jQuery(document).ready(function( $ ) {
     }
   });
 
+  // $(window).scrollReveal();
+  // sr.reveal('.box', {
+  //   duration: 2000,
+  //   origin:'bottom'
+  // });
+
+  
+
+
   $('body').scrollspy({
   target: '#nav-menu-container',
   offset: 54
@@ -196,5 +205,7 @@ jQuery(document).ready(function( $ ) {
     items: 1,
     autoplayTimeout:5000
   });
+
+
 
 });
