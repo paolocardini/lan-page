@@ -38,20 +38,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* add magic section */
-
-canvas {
-  display: block;
-  vertical-align: bottom;
+#particles-js{
+  height: 60vh;
 }
 
-#particles-js {
-  width: 100%;
-  height: 100%;
-  background-color: #b61924;
-  background-image: url('');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
+.container-magic{
+  height: 0vh;
+}
+
+.magic-show{
+  height: 60vh;
+}
+
+.particles-show{
+  /* height: 200px; */
+  background-color: #000;
+  transition: all 1s;
 }
 
 /* add magic section */

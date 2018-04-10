@@ -64,6 +64,66 @@ jQuery(document).ready(function( $ ) {
     $("#mobile-nav, #mobile-nav-toggle").hide();
   }
 
+  // reveal jquery
+
+  window.sr = ScrollReveal();
+  sr.reveal('#about', {
+    duration: 1000,
+    origin: 'bottom',
+    distance: '90px',
+  });
+
+  sr.reveal('.item', {
+    duration: 1000,
+    origin: 'bottom',
+    distance: '90px',
+  });
+
+  sr.reveal('.footer-info', {
+    duration: 1500,
+    origin: 'left',
+    distance: '90px',
+  });
+
+  sr.reveal('.footer-links', {
+    duration: 1500,
+    origin: 'top',
+    distance: '90px',
+  });
+
+  sr.reveal('.footer-contact', {
+    duration: 1500,
+    origin: 'top',
+    distance: '90px',
+  });
+
+  sr.reveal('.footer-newsletter', {
+    duration: 1500,
+    origin: 'right',
+    distance: '90px',
+  });
+
+  sr.reveal('.box-left', {
+    duration: 1500,
+    origin: 'left',
+    distance: '90px',
+  });
+
+  sr.reveal('.box-top', {
+    duration: 1500,
+    origin: 'top',
+    distance: '90px',
+  });
+
+  sr.reveal('.box-right', {
+    duration: 1500,
+    origin: 'right',
+    distance: '90px',
+  });
+
+  // reveal jquery
+
+
   // Smooth scroll for the menu and links with .scrollto classes
 
 //   $('.nav-menu a, #mobile-nav a, .scrollto[href*="#"]:not([href="#"])').click(function() {
@@ -118,17 +178,9 @@ jQuery(document).ready(function( $ ) {
     }
   });
 
-  // $(window).scrollReveal();
-  // sr.reveal('.box', {
-  //   duration: 2000,
-  //   origin:'bottom'
-  // });
-
-  
-
 
   $('body').scrollspy({
-  target: '#nav-menu-container',
+  target: '.nav-text-color',
   offset: 54
 });
 
@@ -205,6 +257,19 @@ jQuery(document).ready(function( $ ) {
     items: 1,
     autoplayTimeout:5000
   });
+
+  // add magic section
+
+  $('#intro .btn-get-started').on('click', function(e) {
+    $('#particles-js').addClass('particles-show');
+    $('#magic-show-container').removeClass('container-magic').addClass('magic-show');
+
+  });
+
+  // $('#intro .btn-get-started').on('click', function(e) {
+  //   $('#particles-js').removeClass('particles-show').addClass('particles-hidden');
+  //
+  // });
 
 
 
