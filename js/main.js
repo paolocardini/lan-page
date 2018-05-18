@@ -1,4 +1,4 @@
-jQuery(document).ready(function( $ ) {
+jQuery(document).ready(function($) {
 
   // Back to top button
   $(window).scroll(function() {
@@ -8,8 +8,10 @@ jQuery(document).ready(function( $ ) {
       $('.back-to-top').fadeOut('slow');
     }
   });
-  $('.back-to-top').click(function(){
-    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+  $('.back-to-top').click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1500, 'easeInOutExpo');
     return false;
   });
 
@@ -70,55 +72,73 @@ jQuery(document).ready(function( $ ) {
   sr.reveal('#about', {
     duration: 1000,
     origin: 'bottom',
-    distance: '90px',
+    distance: '180px',
+  });
+
+  sr.reveal('.magic-title-intro', {
+    duration: 1000,
+    origin: 'top',
+    distance: '300px',
+  });
+
+  sr.reveal('.par-left', {
+    duration: 1000,
+    origin: 'left',
+    distance: '300px',
+  });
+
+  sr.reveal('.par-right', {
+    duration: 1000,
+    origin: 'right',
+    distance: '300px',
   });
 
   sr.reveal('.item', {
     duration: 1000,
     origin: 'bottom',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.footer-info', {
     duration: 1500,
     origin: 'left',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.footer-links', {
     duration: 1500,
     origin: 'top',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.footer-contact', {
     duration: 1500,
     origin: 'top',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.footer-newsletter', {
     duration: 1500,
     origin: 'right',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.box-left', {
     duration: 1500,
     origin: 'left',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.box-top', {
     duration: 1500,
     origin: 'top',
-    distance: '90px',
+    distance: '180px',
   });
 
   sr.reveal('.box-right', {
     duration: 1500,
     origin: 'right',
-    distance: '90px',
+    distance: '180px',
   });
 
   // reveal jquery
@@ -126,24 +146,24 @@ jQuery(document).ready(function( $ ) {
 
   // Smooth scroll for the menu and links with .scrollto classes
 
-//   $('.nav-menu a, #mobile-nav a, .scrollto[href*="#"]:not([href="#"])').click(function() {
-//   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-//     var target = $(this.hash);
-//     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-//     if (target.length) {
-//       $('html, body').animate({
-//         scrollTop: (target.offset().top - 54)
-//       }, 1000, "easeInOutExpo");
-//       return false;
-//     }
-//   }
-// });
-//
-//
-// $('body').scrollspy({
-//   target: '#header',
-//   offset: 10
-// });
+  //   $('.nav-menu a, #mobile-nav a, .scrollto[href*="#"]:not([href="#"])').click(function() {
+  //   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+  //     var target = $(this.hash);
+  //     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+  //     if (target.length) {
+  //       $('html, body').animate({
+  //         scrollTop: (target.offset().top - 54)
+  //       }, 1000, "easeInOutExpo");
+  //       return false;
+  //     }
+  //   }
+  // });
+  //
+  //
+  // $('body').scrollspy({
+  //   target: '#header',
+  //   offset: 10
+  // });
 
   $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -154,7 +174,7 @@ jQuery(document).ready(function( $ ) {
         if ($('#header').length) {
           top_space = $('#header').outerHeight();
 
-          if( ! $('#header').hasClass('header-fixed') ) {
+          if (!$('#header').hasClass('header-fixed')) {
             top_space = top_space - 20;
           }
         }
@@ -180,9 +200,9 @@ jQuery(document).ready(function( $ ) {
 
 
   $('body').scrollspy({
-  target: '.nav-text-color',
-  offset: 54
-});
+    target: '.nav-text-color',
+    offset: 54
+  });
 
 
   // Header scroll class
@@ -200,11 +220,35 @@ jQuery(document).ready(function( $ ) {
 
     if ($(this).scrollTop() > 4000) {
       $('#magic-footer').removeClass('transparent-footer').addClass('hidden-footer-right');
-    } else {
+    } else {}
+
+
+    // Test
+    var navContainer = $("#nav-menu-container");
+    navContainer.find(".nav-menu > LI").removeClass("menu-active");
+    if (isIntoView($("#about"))) {
+       navContainer.find(".nav-menu A[href='#about']").parent().addClass("menu-active");
+    } else if (isIntoView($("#services"))) {
+        navContainer.find(".nav-menu A[href='#services']").parent().addClass("menu-active");
+    } else if (isIntoView($("#skills"))) {
+        navContainer.find(".nav-menu A[href='#skills']").parent().addClass("menu-active");
+    } else if (isIntoView($("#team"))) {
+        navContainer.find(".nav-menu A[href='#team']").parent().addClass("menu-active");
+    } else if (isIntoView($("#footer"))) {
+        navContainer.find(".nav-menu A[href='#footer']").parent().addClass("menu-active");
     }
+
   });
 
 
+  // Return true se element è in view (visibile)
+  function isIntoView(element) {
+      var pageTop = $(window).scrollTop();
+      var pageBottom = pageTop + $(window).height();
+      var elementTop = $(element).offset().top;
+      var elementBottom = elementTop + $(element).height();
+      return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+  }
 
   // Skills section
 
@@ -213,7 +257,9 @@ jQuery(document).ready(function( $ ) {
     $('.progress .progress-bar').each(function() {
       $(this).css("width", $(this).attr("aria-valuenow") + '%');
     });
-  }, { offset: '80%'} );
+  }, {
+    offset: '80%'
+  });
 
   // jQuery counterUp (used in Facts section)
 
@@ -231,12 +277,17 @@ jQuery(document).ready(function( $ ) {
     layoutMode: 'fitRows'
   });
 
-  $('#portfolio-flters li').on( 'click', function() {
+  $('#portfolio-flters li').on('click', function() {
     $("#portfolio-flters li").removeClass('filter-active');
     $(this).addClass('filter-active');
 
-    portfolioIsotope.isotope({ filter: $(this).data('filter') });
+    portfolioIsotope.isotope({
+      filter: $(this).data('filter')
+    });
   });
+
+
+
 
   // Clients carousel
 
@@ -244,7 +295,16 @@ jQuery(document).ready(function( $ ) {
     autoplay: true,
     dots: true,
     loop: true,
-    responsive: { 0: { items: 2 }, 768: { items: 4 }, 900: { items: 6 }
+    responsive: {
+      0: {
+        items: 2
+      },
+      768: {
+        items: 4
+      },
+      900: {
+        items: 6
+      }
     }
   });
 
@@ -255,22 +315,15 @@ jQuery(document).ready(function( $ ) {
     dots: true,
     loop: true,
     items: 1,
-    autoplayTimeout:5000
+    autoplayTimeout: 5000
   });
 
   // add magic section
 
-  $('#intro .btn-get-started').on('click', function(e) {
-    $('#particles-js').addClass('particles-show');
-    $('#magic-show-container').removeClass('container-magic').addClass('magic-show');
+  $('#btn-add-magic').on('click', function() {
+    $("#particles-js").toggle('particles-background');
 
   });
-
-  // $('#intro .btn-get-started').on('click', function(e) {
-  //   $('#particles-js').removeClass('particles-show').addClass('particles-hidden');
-  //
-  // });
-
 
 
 });
